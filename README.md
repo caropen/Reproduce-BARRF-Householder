@@ -34,7 +34,7 @@ We assume a working CUDA environment, including CuRAND, CuBLAS and nvcc, and a w
 
 Three other repositories are relevant:
 
-1. The main algorithms proposed by the paper (Householder Block Adaptive Randomized Range Finder, HH-BARRF), are found here: https://gitlab.jsc.fz-juelich.de/penke3/householder-block-adaptive-range-finder
+1. The main algorithms proposed by the paper (Householder Block Adaptive Randomized Range Finder, HH-BARRF), are found here: https://github.com/caropen/Householder-Blocked-Adaptive-Randomized-Range-Finder
 
 2. The legacy code used for comparison, based on Gram-Schmidt-Orthogonalization, comes from [RSVDpack](https://github.com/sergeyvoronin/LowRankMatrixDecompositionCodes). We adapted drivers and routines to have comparable runtime measurements in this [fork](https://github.com/caropen/LowRankMatrixDecompositionCodes).
 
