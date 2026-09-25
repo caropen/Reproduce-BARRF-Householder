@@ -1,0 +1,28 @@
+diff --git a/testing/magma_generate.cpp b/testing/magma_generate.cpp
+index 80ff80d4b..bc28f3b4f 100644
+--- a/testing/magma_generate.cpp
++++ b/testing/magma_generate.cpp
+@@ -681,9 +681,7 @@ void magma_generate_matrix(
+     real_t sigma_max = 1;
+     magma_int_t minmn = min( A.m, A.n );
+ 
+-    // ----------
+-    // set sigma to unknown (nan)
+-    lapack::laset( "general", sigma.n, 1, nan, nan, sigma(0), sigma.n );
++
+ 
+     // ----- decode matrix type
+     MatrixType type = MatrixType::identity;
+@@ -748,6 +746,12 @@ void magma_generate_matrix(
+     else if (contains( name, "_rcluster0" )) { dist = Dist::rcluster0; }
+     else if (contains( name, "_specified" )) { dist = Dist::specified; }
+ 
++    // ----------
++    // set sigma to unknown (nan) if not specified
++    if (dist != Dist::specified) {
++        lapack::laset( "general", sigma.n, 1, nan, nan, sigma(0), sigma.n );
++    }
++
+     if (opts.cond != 0
+         && (dist == Dist::randn
+             || dist == Dist::rands
